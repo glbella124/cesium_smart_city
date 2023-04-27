@@ -24,16 +24,21 @@ export default function initViewer() {
   let viewer = new Cesium.Viewer("cesiumContainer", {
     // 信息窗口 -- 不提示allow-script报错
     infoBox: false,
-    // baseLayerPicker: false,
+    // 是否显示查询按钮
+    geocoder: false,
+    baseLayerPicker: false,
     animation: false,
     timeline: false,
-    // homeButton: false,
+    homeButton: false,
     sceneModePicker: false,
     navigationHelpButton: false,
     fullscreenButton: false,
     vrButton: false,
     selectionIndicator: false,
   });
+
+  // 隐藏logo
+  viewer.cesiumWidget.creditContainer.style.display = "none";
 
   // 地图叠加
   let imageryLayers = viewer.imageryLayers;
@@ -71,11 +76,13 @@ export default function initViewer() {
       maximumLevel: 18,
     })
   );
-  // 隐藏logo
-  viewer.cesiumWidget.creditContainer.style.display = "none";
 
   // 上海
   let position = Cesium.Cartesian3.fromDegrees(121.5, 31.1, 10000);
+
+  // 添加3D建筑
+  let tiles3d = new Cesium.createOsmBuildings();
+  const osmBuildings = viewer.scene.primitives.add(tiles3d);
 
   // 广州塔
   let position2 = Cesium.Cartesian3.fromDegrees(113.3191, 23.109, 1000);
@@ -83,20 +90,13 @@ export default function initViewer() {
   // 让相机飞往某个地方
   viewer.camera.flyTo({
     destination: position2,
-    orientation: {
-      heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-40),
-      roll: 0,
-    },
+    duration: 2,
+    // orientation: {
+    //   heading: Cesium.Math.toRadians(0),
+    //   pitch: Cesium.Math.toRadians(-40),
+    //   roll: 0,
+    // },
   });
 
-  // 添加3D建筑
-  const osmBuildings = viewer.scene.primitives.add(
-    // 若是有自己的数据
-    new Cesium.Cesium3DTileset({
-      url: "",
-    })
-  );
-
-  return viewer
+  return viewer;
 }

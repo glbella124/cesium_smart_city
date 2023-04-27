@@ -1,5 +1,5 @@
 {
-  "name": "cesium_vue",
+  "name": "cesium_smart_city",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "cesium": "^1.98.1",
+    "cesium-navigation-es6": "^3.0.8",
     "core-js": "^3.8.3",
     "gsap": "^3.11.3",
     "node-polyfill-webpack-plugin": "^2.0.1",
