@@ -11,6 +11,8 @@ import initViewer from "@/cesium/initViewer";
 import MousePosition from "@/cesium/MousePosition";
 import CesiumNavigation from "cesium-navigation-es6";
 import modifyMap from "@/cesium/modifyMap";
+import modifyBuilding from "@/cesium/modifyBuilding";
+
 onMounted(() => {
   let viewer = initViewer();
 
@@ -38,7 +40,10 @@ onMounted(() => {
 
   // 初始化导航罗盘
   let navigation = new CesiumNavigation(viewer, options);
+  // 修改地图的底色
   modifyMap(viewer);
+  // 修改建筑的颜色
+  modifyBuilding(viewer);
 });
 </script>
 

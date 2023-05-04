@@ -81,8 +81,8 @@ export default function initViewer() {
   let position = Cesium.Cartesian3.fromDegrees(121.5, 31.1, 10000);
 
   // 添加3D建筑
-  let tiles3d = new Cesium.createOsmBuildings();
-  const osmBuildings = viewer.scene.primitives.add(tiles3d);
+  // let tiles3d = new Cesium.createOsmBuildings();
+  // const osmBuildings = viewer.scene.primitives.add(tiles3d);
 
   // 广州塔
   let position2 = Cesium.Cartesian3.fromDegrees(113.3191, 23.109, 1000);
