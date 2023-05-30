@@ -5,7 +5,7 @@ export default function modifyBuilding(viewer) {
   const osmBuildings = viewer.scene.primitives.add(tile3d);
 
   tile3d.style = new Cesium.Cesium3DTileStyle({
-    show:"${feature['name']} !== '广州塔'"
+    show: "${feature['name']} !== '广州塔'",
   })
 
   // 一秒钟60帧
@@ -31,13 +31,18 @@ export default function modifyBuilding(viewer) {
         // 动态光环
         // czm_frameNumber获取当前帧数
         // fract(x), 返回x的小数部分
-        float time = fract(czm_frameNumber/60.0)*6.28;
+        // float time = fract(czm_frameNumber/60.0)*6.28;
+        // 总共600帧
+        float time = fract(czm_frameNumber/(60.0*10.0));
         // 实现往返的操作
         time = abs(time-0.5)*2.0;
-        time = sin(time);
+        // time = sin(time);
 
         // clamp(x,min,max),返回x在min和max之间的最小值
-        float diff = clamp(position.z/500.0,0.0,1.0);
+        float diff = abs(clamp(position.z/500.0,0.0,1.0) - time);
+        // step(edge,x) 如果x大于等于edge,返回1，否则返回0
+        diff = step(0.01,diff);
+        gl_FragColor.rgb += vec3(0.5) * (1.0 - diff);
       }
       `);
 

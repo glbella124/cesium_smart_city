@@ -12,7 +12,7 @@ import MousePosition from "@/cesium/MousePosition";
 import CesiumNavigation from "cesium-navigation-es6";
 import modifyMap from "@/cesium/modifyMap";
 import modifyBuilding from "@/cesium/modifyBuilding";
-
+import LightCone from "@/cesium/LightCone"
 onMounted(() => {
   let viewer = initViewer();
 
@@ -44,6 +44,10 @@ onMounted(() => {
   modifyMap(viewer);
   // 修改建筑的颜色
   modifyBuilding(viewer);
+  // 添加动态的光锥特效
+  let lightCone = new LightCone(viewer)
+  // 创建区域上升流光飞线
+  
 });
 </script>
 
