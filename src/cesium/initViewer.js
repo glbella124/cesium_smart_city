@@ -39,63 +39,72 @@ export default function initViewer() {
 
   // 隐藏logo
   viewer.cesiumWidget.creditContainer.style.display = "none";
+  viewer.scene.globe.enableLighting = true;
+  // 取消天空盒显示
+  viewer.scene.skyBox.show = false;
+  // 设置背景为黑色
+  viewer.scene.backgroundColor = Cesium.Color.BLACK;
+  // 抗锯齿
+  viewer.scene.postProcessStages.fxaa.enabled = true;
 
   // 地图叠加
-  let imageryLayers = viewer.imageryLayers;
-  let layer = imageryLayers.addImageryProvider(
-    // 天地图中文标记服务
-    new Cesium.WebMapTileServiceImageryProvider({
-      alpha: 0.8,
-      url: "http://{s}.tianditu.gov.cn/cia_c/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=c&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=30d07720fa76f07732d83c748bb84211",
-      layer: "tdtCva",
-      style: "default",
-      format: "tiles",
-      tileMatrixSetID: "c",
-      subdomains: ["t0", "t1", "t2", "t3", "t4", "t5", "t6", "t7"],
-      tilingScheme: new Cesium.GeographicTilingScheme(),
-      tileMatrixLabels: [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "18",
-      ],
-      maximumLevel: 18,
-    })
-  );
+  // let imageryLayers = viewer.imageryLayers;
+  // let layer = imageryLayers.addImageryProvider(
+  //   // 天地图中文标记服务
+  //   new Cesium.WebMapTileServiceImageryProvider({
+  //     alpha: 0.8,
+  //     url: "http://{s}.tianditu.gov.cn/cia_c/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=cia&tileMatrixSet=c&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=30d07720fa76f07732d83c748bb84211",
+  //     layer: "tdtCva",
+  //     style: "default",
+  //     format: "tiles",
+  //     tileMatrixSetID: "c",
+  //     subdomains: ["t0", "t1", "t2", "t3", "t4", "t5", "t6", "t7"],
+  //     tilingScheme: new Cesium.GeographicTilingScheme(),
+  //     tileMatrixLabels: [
+  //       "1",
+  //       "2",
+  //       "3",
+  //       "4",
+  //       "5",
+  //       "6",
+  //       "7",
+  //       "8",
+  //       "9",
+  //       "10",
+  //       "11",
+  //       "12",
+  //       "13",
+  //       "14",
+  //       "15",
+  //       "16",
+  //       "17",
+  //       "18",
+  //     ],
+  //     maximumLevel: 18,
+  //   })
+  // );
 
   // 上海
-  let position = Cesium.Cartesian3.fromDegrees(121.5, 31.1, 10000);
+  let position = Cesium.Cartesian3.fromDegrees(
+    // 经度
+    113.3301,
+    // 纬度
+    23.0991,
+    // 高度
+    1500
+  );
 
-  // 添加3D建筑
-  // let tiles3d = new Cesium.createOsmBuildings();
-  // const osmBuildings = viewer.scene.primitives.add(tiles3d);
 
-  // 广州塔
-  let position2 = Cesium.Cartesian3.fromDegrees(113.3191, 23.109, 1000);
 
   // 让相机飞往某个地方
   viewer.camera.flyTo({
-    destination: position2,
+    destination: position,
     duration: 2,
-    // orientation: {
-    //   heading: Cesium.Math.toRadians(0),
-    //   pitch: Cesium.Math.toRadians(-40),
-    //   roll: 0,
-    // },
+    orientation: {
+      heading: Cesium.Math.toRadians(-45),
+      pitch: Cesium.Math.toRadians(-30),
+      roll: 0,
+    },
   });
 
   return viewer;

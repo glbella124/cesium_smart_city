@@ -1,6 +1,9 @@
 import * as Cesium from "cesium";
 import gsap from "gsap";
 
+/**
+ * 光锥
+ */
 export default class LightCone {
   constructor(viewer) {
     this.params = {

@@ -13,6 +13,8 @@ import CesiumNavigation from "cesium-navigation-es6";
 import modifyMap from "@/cesium/modifyMap";
 import modifyBuilding from "@/cesium/modifyBuilding";
 import LightCone from "@/cesium/LightCone"
+import RectFlyLight from "@/cesium/RectFlyLight"
+
 onMounted(() => {
   let viewer = initViewer();
 
@@ -47,6 +49,7 @@ onMounted(() => {
   // 添加动态的光锥特效
   let lightCone = new LightCone(viewer)
   // 创建区域上升流光飞线
+  let rectFlyLight = new RectFlyLight(viewer)
   
 });
 </script>

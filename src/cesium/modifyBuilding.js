@@ -1,16 +1,16 @@
 import * as Cesium from "cesium";
 
 export default function modifyBuilding(viewer) {
-  let tile3d = new Cesium.createOsmBuildings();
-  const osmBuildings = viewer.scene.primitives.add(tile3d);
+  let tiles3d = new Cesium.createOsmBuildings();
+  const osmBuildings = viewer.scene.primitives.add(tiles3d);
 
-  tile3d.style = new Cesium.Cesium3DTileStyle({
-    show: "${feature['name']} !== '广州塔'",
-  })
+  // tiles3d.style = new Cesium.Cesium3DTileStyle({
+  //   show: "${feature['name']} !== '广州塔'",
+  // });
 
   // 一秒钟60帧
   // 监听当瓦片加载时候执行事件
-  tile3d.tileVisible.addEventListener((tile) => {
+  tiles3d.tileVisible.addEventListener((tile) => {
     // console.log(tile);
     const cesium3DTileCon = tile.content;
     const featuresLength = cesium3DTileCon.featuresLength;
@@ -19,8 +19,8 @@ export default function modifyBuilding(viewer) {
       // 修改模型的片元着色器
       const fragmentShaderSource =
         (model._rendererResources.sourceShaders[1] = `
-      varying vec3 v_positionEC;
-      void main(){
+        varying vec3 v_positionEC;
+        void main(){
         czm_materialInput materialInput;
         // 获取模型position信息
         vec4 position = czm_inverseModelView * vec4(v_positionEC,1.0);
