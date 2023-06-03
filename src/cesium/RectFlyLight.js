@@ -24,7 +24,7 @@ export default class RectFlyLight {
       let end = Cesium.Cartesian3.fromDegrees(
         points[0],
         points[1],
-        200 + Math.random() * 1000
+        200 + Math.random() * 3000
       );
       //   创建自定义线材质
       let polylineTrailMaterialProperty = new PolylineTrailMaterialProperty();
@@ -33,7 +33,7 @@ export default class RectFlyLight {
         polyline: {
           positions: [start, end],
           width: 2,
-          material: Cesium.Color.YELLOW,
+          material: polylineTrailMaterialProperty,
         },
       });
     });

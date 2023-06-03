@@ -1,6 +1,6 @@
 import * as Cesium from "cesium";
 import gsap from "gsap";
-// 避免材质重复
+// 精灵线
 let typeNum = 0;
 export default class PolylineTrailMaterialProperty {
 
