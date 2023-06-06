@@ -21,6 +21,7 @@ export default class LightWallMaterialProperty {
                       vec2 st = materialInput.st;
                       // 根据uv采样颜色,fract函数，保留小数部分
                       // vec4 color = texture2D(image,vec2(fract(st.x - uTime),st.y));
+                      // 上下采样与左右采样相反
                       vec4 color = texture2D(image,vec2(fract(st.y + uTime),st.x));
                       material.diffuse = color.rgb;
                       material.alpha = color.a;
