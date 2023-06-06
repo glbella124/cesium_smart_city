@@ -15,6 +15,9 @@ import modifyBuilding from "@/cesium/modifyBuilding";
 import LightCone from "@/cesium/LightCone";
 import RectFlyLight from "@/cesium/RectFlyLight";
 import RoadLightLine from "@/cesium/RoadLightLine";
+import RadarLight from "@/cesium/RadarLight";
+import LightSpread from "@/cesium/LightSpread";
+import LightWall from "@/cesium/LightWall";
 
 onMounted(() => {
   let viewer = initViewer();
@@ -53,6 +56,12 @@ onMounted(() => {
   let rectFlyLight = new RectFlyLight(viewer);
   // 创建道路飞线
   let roadLightLine = new RoadLightLine(viewer);
+  // 创建雷达效果
+  let radarLight = new RadarLight(viewer);
+  // 创建六边形光波扩散效果
+  let lightSpread = new LightSpread(viewer);
+  // 创建光墙
+  let lightWall = new LightWall(viewer);
 });
 </script>
 
