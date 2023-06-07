@@ -64,10 +64,11 @@ onMounted(() => {
   // 创建光墙
   let lightWall = new LightWall(viewer);
   // 创建烟花粒子效果
-  // particleLight,创建烟花粒子
+  /// particleLight,创建烟花粒子
   let particleLight = new ParticleLight(viewer, Cesium.Color.RED);
-  let particleLight1 = new ParticleLight(viewer, Cesium.Color.AQUA);
-  let particleLight2 = new ParticleLight(viewer, Cesium.Color.GREEN);
+  let particleLight1 = new ParticleLight(viewer, Cesium.Color.YELLOW);
+  let particleLight2 = new ParticleLight(viewer, Cesium.Color.PINK);
+  let particleLight3 = new ParticleLight(viewer, Cesium.Color.BLUE);
 });
 </script>
 
